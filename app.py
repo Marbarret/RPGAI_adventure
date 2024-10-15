@@ -1,33 +1,75 @@
-import tkinter as tk
-import numpy as np
-from transformers import pipeline
+import random
+from flask import Flask, render_template, request
+from transformers import GPTNeoForCausalLM, GPT2Tokenizer
 
-chatbot = pipeline('text-generation', model='gpt2')
+app = Flask(__name__)
 
-def gerar_resposta(pergunta):
-    resposta = chatbot(pergunta, max_length=100, num_return_sequences=1)
-    return resposta[0]['generated_text']
+# Carregando o modelo GPT-2 e o tokenizer
+model_name = "EleutherAI/gpt-neo-2.7B"
+model = GPTNeoForCausalLM.from_pretrained(model_name)
+tokenizer = GPT2Tokenizer.from_pretrained(model_name)
 
-def enviar_mensagem():
-    mensagem = entrada_usuario.get()
-    if mensagem.strip(): 
-        caixa_chat.insert(tk.END, f"Jogador: {mensagem}\n")
-        resposta = gerar_resposta(mensagem)
-        caixa_chat.insert(tk.END, f"NPC: {resposta}\n")
-        entrada_usuario.delete(0, tk.END)
+# Dados do jogo
+player_hp = 100
+enemy_hp = 50
+
+def generate_narrative(user_input, player_roll, enemy_roll):
+    """Gera uma narrativa usando o modelo GPT-2 com um prompt mais detalhado"""
+    prompt = f"""Você está jogando um RPG de fantasia. O jogador decide {user_input}. 
+    O jogador rola um {player_roll}, e o inimigo rola {enemy_roll}.
+    Descreva o que acontece em uma narrativa de RPG de forma detalhada e interessante, levando em conta o que o jogador quer fazer e o que acontece com base nos números rolados.
+    """
+
+    # Codifica a entrada do usuário e gera o texto com o modelo GPT-2
+    inputs = tokenizer.encode(prompt, return_tensors="pt")
+    outputs = model.generate(inputs, max_length=150, num_return_sequences=1, no_repeat_ngram_size=2, do_sample=True, top_p=0.95, temperature=0.7)
+    
+    # Decodifica o texto gerado
+    narrative = tokenizer.decode(outputs[0], skip_special_tokens=True)
+    return narrative
+
+@app.route('/')
+def index():
+    return render_template('index.html', player_hp=player_hp, enemy_hp=enemy_hp)
+
+@app.route('/roll', methods=['POST'])
+def roll_dice():
+    global player_hp, enemy_hp
+
+    # Ação do jogador
+    user_action = request.form['action']
+
+    # Tipo de dado selecionado
+    dice_type = int(request.form['dice'])
+    
+    # Rolar o dado
+    player_roll = random.randint(1, dice_type)
+    enemy_roll = random.randint(1, 6)  # Inimigo sempre usa D6
+    
+    # Gera a narrativa com a ajuda do GPT-2
+    narrative = generate_narrative(user_action, player_roll, enemy_roll)
+
+    # Atualiza a vida de acordo com os resultados
+    if player_roll > enemy_roll:
+        enemy_hp -= player_roll
+        result = f"Você rolou {player_roll} e derrotou o inimigo que rolou {enemy_roll}. Causou {player_roll} de dano!"
+    elif player_roll < enemy_roll:
+        player_hp -= enemy_roll
+        result = f"O inimigo rolou {enemy_roll} e você rolou {player_roll}. Recebeu {enemy_roll} de dano!"
     else:
-        caixa_chat.insert(tk.END, "Você precisa escrever algo!\n")
+        result = "Empate! Ninguém sofreu dano."
 
-janela = tk.Tk()
-janela.title("RPG Chatbot")
+    # Verifica se o jogo terminou
+    if player_hp <= 0:
+        result += " Você perdeu! :( "
+        player_hp = 100  # Reiniciar o jogo
+        enemy_hp = 50
+    elif enemy_hp <= 0:
+        result += " Você venceu! :) "
+        player_hp = 100  # Reiniciar o jogo
+        enemy_hp = 50
 
-caixa_chat = tk.Text(janela, height=20, width=50)
-caixa_chat.pack()
+    return render_template('index.html', player_hp=player_hp, enemy_hp=enemy_hp, result=result, narrative=narrative)
 
-entrada_usuario = tk.Entry(janela, width=50)
-entrada_usuario.pack()
-
-botao_enviar = tk.Button(janela, text="Enviar", command=enviar_mensagem)
-botao_enviar.pack()
-
-janela.mainloop()
+if __name__ == '__main__':
+    app.run(debug=True)
