@@ -1,54 +1,63 @@
-import os
-import random
-import threading
-from flask import Flask, render_template, request
-from transformers import GPTNeoForCausalLM, GPT2Tokenizer
-import torch
-import subprocess
+import tkinter as tk
+from xml.dom.minidom import CharacterData
+import customtkinter
+from chat_user import ChatApp
+from character_creation import CharacterCreationApp
 
-MODEL_DIR = './models/fine_tuned_gpt_neo'
+customtkinter.set_appearance_mode("System")
+customtkinter.set_default_color_theme("blue")
 
-app = Flask(__name__)
+class App(customtkinter.CTk):
+    def __init__(self):
+        super().__init__()
 
-# Função para verificar se o modelo já existe
-def check_if_model_exists():
-    return os.path.exists(MODEL_DIR) and os.path.isdir(MODEL_DIR)
+        self.title("RPG AI Adventure")
+        self.geometry(f"{1000}x700")
 
-# Função para treinar o modelo em segundo plano
-def train_model():
-    print("Treinando o modelo em background...")
-    subprocess.call(['python', 'train.py'])
+        self.current_frame = None
+        self.show_initial_screen()  
 
-# Verificação do modelo e treinamento em segundo plano
-if not check_if_model_exists():
-    # Cria uma thread para rodar o treinamento em background
-    train_thread = threading.Thread(target=train_model)
-    train_thread.start()
+    def show_initial_screen(self):
+        if self.current_frame:
+            self.current_frame.destroy()
 
-# Carregar o modelo e tokenizer depois do treinamento
-def load_model_and_tokenizer():
-    model = GPTNeoForCausalLM.from_pretrained(MODEL_DIR)
-    tokenizer = GPT2Tokenizer.from_pretrained(MODEL_DIR)
-    model.eval()
-    return model, tokenizer
+        self.current_frame = customtkinter.CTkFrame(self)
+        self.current_frame.pack(fill="both", expand=True)
 
-# Verificar e carregar o modelo, ou aguardar o treinamento
-if check_if_model_exists():
-    model, tokenizer = load_model_and_tokenizer()
-else:
-    print("Aguardando o término do treinamento para carregar o modelo...")
-    model, tokenizer = None, None
+        self.title_label = customtkinter.CTkLabel(self.current_frame, text="Bem-vindo ao RPG AI Adventure!", font=customtkinter.CTkFont(size=24, weight="bold"))
+        self.title_label.pack(pady=40)
 
-player_hp = 100
-enemy_hp = 50
+        self.create_char_button = customtkinter.CTkButton(self.current_frame, text="Criar Personagem", command=self.create_character_screen)
+        self.create_char_button.pack(pady=20)
 
-def generate_narrative(user_input, player_roll, enemy_roll):
-    prompt = f"""Você está jogando um RPG de fantasia. O jogador decide {user_input}. 
-    O jogador rola um {player_roll}, e o inimigo rola {enemy_roll}.
-    Descreva o que acontece em uma narrativa de RPG de forma detalhada e interessante, levando em conta o que o jogador quer fazer e o que acontece com base nos números rolados.
-    """
-    
-    inputs = tokenizer.encode(prompt, return_tensors="pt")
-    inputs = inputs.to('cuda' if torch.cuda.is_available() else 'cpu')
-    
-    outputs = model.generate(inputs, max_length=150, num_return_sequences=1, no_repeat_ngram_size=2, do_sample=True, top_p=0.95, 
+        self.start_game_button = customtkinter.CTkButton(self.current_frame, text="Iniciar Partida", command=self.start_game)
+        self.start_game_button.pack(pady=20)
+
+        self.history_button = customtkinter.CTkButton(self.current_frame, text="Histórico de Partidas", command=self.show_history)
+        self.history_button.pack(pady=20)
+
+    def start_game(self):
+        if self.current_frame:
+            self.current_frame.destroy()
+        self.show_chat_screen()
+
+    def show_chat_screen(self, character_data=None):
+        if self.current_frame:
+            self.current_frame.pack_forget()
+
+        chat_root = tk.Toplevel(self)
+        self.current_frame = ChatApp(chat_root, character_data)
+        self.current_frame.pack(fill="both", expand=True)
+
+    def create_character_screen(self):
+        pass
+
+    def show_history(self):
+        pass  # Implementar a tela de histórico
+
+if __name__ == "__main__":
+    app = App()
+    app.mainloop()
+
+
+
