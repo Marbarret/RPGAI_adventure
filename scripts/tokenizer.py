@@ -1,13 +1,22 @@
-# tokenizer.py
+from datasets import load_dataset
 from transformers import GPT2Tokenizer
-from config import PRETRAINED_MODEL_NAME
 
-def get_tokenizer():
-    """Função para inicializar o tokenizer GPT-Neo"""
-    tokenizer = GPT2Tokenizer.from_pretrained(PRETRAINED_MODEL_NAME)
-    tokenizer.pad_token = tokenizer.eos_token  # Definir o token de padding como o EOS token
-    return tokenizer
+def load_and_tokenize_data(dataset_path):
+    # Carregar o dataset
+    dataset = load_dataset('json', data_files=dataset_path)
+
+    # Carregar o tokenizer GPT-2
+    tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
+
+    # Função de tokenização
+    def tokenize_function(examples):
+        return tokenizer(examples['Text'], truncation=True)
+
+    # Tokenizar o dataset
+    tokenized_dataset = dataset.map(tokenize_function, batched=True)
+    return tokenized_dataset
 
 if __name__ == "__main__":
-    tokenizer = get_tokenizer()
-    print("Tokenizer carregado com sucesso.")
+    dataset_path = "data/rpg_ai/rpg_dataset.json"  # Caminho relativo ao arquivo do dataset
+    tokenized_dataset = load_and_tokenize_data(dataset_path)
+    print("Tokenização concluída!")

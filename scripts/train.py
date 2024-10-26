@@ -1,68 +1,37 @@
-# train.py
-import torch
-from transformers import GPTNeoForCausalLM, Trainer, TrainingArguments
-from datasets import load_dataset
-from tokenizer import get_tokenizer
-from config import DATA_DIR, EPOCHS, BATCH_SIZE, LEARNING_RATE, SAVE_MODEL_PATH, PRETRAINED_MODEL_NAME
+from transformers import GPT2LMHeadModel, Trainer, TrainingArguments
+from tokenizer import load_and_tokenize_data
 
-# Verifica se temos GPU disponível
-device = 'cuda' if torch.cuda.is_available() else 'cpu'
+def train_model(tokenized_dataset):
+    # Carregar o modelo pré-treinado GPT-2
+    model = GPT2LMHeadModel.from_pretrained("gpt2")
 
-# Carregar dataset
-dataset = load_dataset('Marcylene/rpg_ai')
+    # Configuração do treinamento
+    training_args = TrainingArguments(
+        output_dir="../models/fine_tuned_gpt2",
+        overwrite_output_dir=True,
+        num_train_epochs=3,
+        per_device_train_batch_size=4,
+        save_steps=500,
+        save_total_limit=2,
+        logging_dir='../logs',
+        logging_steps=10,
+    )
 
-# Inicializar tokenizer
-tokenizer = get_tokenizer()
+    # Configurar o Trainer
+    trainer = Trainer(
+        model=model,
+        args=training_args,
+        train_dataset=tokenized_dataset['train'],
+    )
 
-def tokenize_function(examples):
-    """Tokeniza o dataset usando o tokenizer GPT-Neo"""
-    return tokenizer(examples['Text'], padding="max_length", truncation=True, max_length=512)
+    # Treinamento
+    trainer.train()
 
-# Tokenizar o dataset
-tokenized_datasets = dataset.map(tokenize_function, batched=True)
-
-# Preparar colunas para treinamento
-tokenized_datasets = tokenized_datasets.remove_columns(['Title', 'Objective', 'Text'])
-tokenized_datasets.set_format("torch")
-
-# Dividir dataset
-train_dataset = tokenized_datasets['train']
-eval_dataset = tokenized_datasets['validation']
-
-# Carregar modelo GPT-Neo
-model = GPTNeoForCausalLM.from_pretrained(PRETRAINED_MODEL_NAME)
-model.to(device)
-
-# Definir argumentos de treinamento
-training_args = TrainingArguments(
-    output_dir=SAVE_MODEL_PATH,
-    num_train_epochs=EPOCHS,
-    per_device_train_batch_size=BATCH_SIZE,
-    per_device_eval_batch_size=BATCH_SIZE,
-    warmup_steps=500,
-    weight_decay=0.01,
-    logging_dir='./logs',
-    logging_steps=10,
-    evaluation_strategy="steps",
-    save_steps=500,
-    eval_steps=500,
-    learning_rate=LEARNING_RATE,
-    fp16=torch.cuda.is_available()  # Usar float16 se houver suporte
-)
-
-# Inicializar Trainer
-trainer = Trainer(
-    model=model,
-    args=training_args,
-    train_dataset=train_dataset,
-    eval_dataset=eval_dataset
-)
-
-# Iniciar o treinamento
-trainer.train()
-
-# Salvar o modelo treinado
-trainer.save_model(SAVE_MODEL_PATH)
+    # Salvar o modelo
+    model.save_pretrained("../models/fine_tuned_gpt2")
+    print("Modelo salvo com sucesso!")
 
 if __name__ == "__main__":
-    print("Treinamento concluído e modelo salvo em", SAVE_MODEL_PATH)
+    dataset_path = "data/rpg_ai/rpg_dataset.json"
+    tokenized_dataset = load_and_tokenize_data(dataset_path)
+    train_model(tokenized_dataset)
