@@ -5,7 +5,7 @@ import random
 
 class ChatLogic:
     def __init__(self):
-        self.layout = None  # Referência ao layout
+        self.layout = None
 
     def set_layout(self, layout):
         self.layout = layout
@@ -20,24 +20,20 @@ class ChatLogic:
         self.send_message()
 
     def roll_dice(self):
-        # Get the selected dice type from the combobox
         selected_dice = self.dice_combobox.get()
 
-        # Validate the selection (optional)
         if not selected_dice:
             self.add_message("Erro", "Selecione um dado para rolar!", "system")
             return
-
-        # Roll the dice and get the result
+ 
         try:
-            num_sides = int(selected_dice[1:])  # Extract number of sides from "D#"
+            num_sides = int(selected_dice[1:])
             rolled_value = random.randint(1, num_sides)
-            self.rolled_value = rolled_value  # Store the rolled value
+            self.rolled_value = rolled_value
         except ValueError:
             self.add_message("Erro", "Selecione um dado válido (D4, D6, etc.)", "system")
             return
 
-        # Display the rolled value
         self.add_message("Sistema", f"Você rolou o dado {selected_dice} e obteve {rolled_value}", "system")
 
     def upload_photo(self):
@@ -50,7 +46,6 @@ class ChatLogic:
             self.layout.profile_image_label.image = photo
 
     def get_ai_response(self, user_message):
-        # Lógica para gerar resposta com a IA
         inputs = self.model.encode(user_message, return_tensors="pt")
         outputs = self.model.generate(inputs, max_length=50)
         return self.model.decode(outputs[0], skip_special_tokens=True)
