@@ -41,6 +41,22 @@ O modelo de linguagem é treinado em um grande corpus de texto relacionado a RPG
 - Escalabilidade: O sistema deve ser capaz de lidar com um grande volume de interações e um mundo de jogo complexo.
 - Personalização: Adaptar o comportamento do chatbot às preferências e estilo de jogo de cada usuário.
 
+### Clonagem do Repositório e Instalação de Bibliotecas
+1. Clonar o repositório pelo link
+   ```
+   https://github.com/Marbarret/RPGAI_adventure.git
+   ```
+2. Recomendado a criação de ambiente virtual
+   ```
+    python -m venv seu_ambiente
+    source venv/bin/activate   # Para Linux/Mac
+    .\venv\Scripts\activate    # Para Windows
+   ```
+3. Instalar as dependências utilizadas no projeto
+   ```
+   pip install -r requirements.txt
+   ```
+
 ### Próximos Passos
 - Expansão da base de conhecimento: Aumentar a quantidade e a diversidade de informações sobre o mundo do jogo.
 - Implementação de diálogos mais complexos: Permitir diálogos mais longos e complexos, com ramificações e múltiplos finais.
