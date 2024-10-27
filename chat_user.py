@@ -148,3 +148,9 @@ class ChatLayout(customtkinter.CTkFrame):
                 self.profile_image_label.image = photo
             except (IOError, OSError) as e:
                 print(f"Error opening image: {e}")
+
+    def load_model():
+        model = GPT2LMHeadModel.from_pretrained("../models/fine_tuned_gpt2")
+        tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
+        return model, tokenizer
+
