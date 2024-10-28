@@ -1,7 +1,7 @@
 import customtkinter
 from chat_user import ChatLayout
 from chat_logic import ChatLogic
-from model_loader import load_model  # Importa a função load_model
+from model_loader import load_model
 
 if __name__ == "__main__":
     model, tokenizer = load_model()

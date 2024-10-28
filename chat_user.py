@@ -2,6 +2,7 @@ import customtkinter
 import random
 from datetime import datetime
 import tkinter
+import torch
 from tkinter import filedialog
 from PIL import Image, ImageTk
 
@@ -99,14 +100,14 @@ class ChatLayout(customtkinter.CTkFrame):
             return user_message
 
     def process_user_message(self):
-        user_message = self.send_message()
+        user_message = self.send_message()  # Captura e exibe a mensagem do usuário
 
-        if user_message:
-            input_ids = self.tokenizer.encode(user_message, return_tensors="pt")
-            with torch.no_grad():
-                output = self.model.generate(input_ids, max_length=150, num_return_sequences=1)
-            ai_response = self.tokenizer.decode(output[0], skip_special_tokens=True)
-            self.add_message("AI", ai_response, "ai")
+        if user_message:  # Se houver uma mensagem válida
+            with torch.no_grad():  # Desativa o cálculo de gradiente
+                inputs = self.tokenizer(user_message, return_tensors="pt")
+                outputs = self.model.generate(**inputs)
+                ai_response = self.tokenizer.decode(outputs[0], skip_special_tokens=True)
+                self.add_message("AI", ai_response, "ai")
 
     def send_message_event(self, event):
         self.process_user_message()
