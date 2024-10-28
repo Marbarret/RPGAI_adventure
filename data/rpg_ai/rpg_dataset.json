@@ -1,18 +1,19 @@
-[
-  {
-    "input": "Qual é o objetivo da missão O Chamado do Guardião?",
-    "response": "Fale com Eldora, a Guardiã das Florestas, no Bosque Sombrio."
-  },
-  {
-    "input": "Qual é a história da missão O Segredo do Lago de Cristal?",
-    "response": "Investigue o Lago de Cristal e descubra o que está corrompendo suas águas."
-  },
-  {
-    "input": "O Enigma do Mestre dos Jogos?",
-    "response": "Decifre o enigma deixado pelo Mestre dos Jogos na Torre Esquecida."
-  },
-  {
-    "input": "As Sombras Sobem",
-    "response": "Derrote as Criaturas das Sombras e proteja a Vila da Névoa."
-  }
-]
+{
+  "interacoes": [
+    {
+      "contexto": "Você precisa ficar mais forte conseguindo itens para melhoria de equipamento.",
+      "missao": "Destrua três vacas pretas e colete couro para armadura.",
+      "condicao": "É necessário tirar 5 ou mais no dado para sucesso.",
+      "resultado_dado": 3,
+      "user": "O usuário tirou 3 no dado.",
+      "ai": "Você não conseguiu completar a missão. Tente novamente."
+    },
+    {
+      "contexto": "Durante uma caminhada até a taverna do Sr. Smith, você encontra lobos famintos.",
+      "missao": "Você precisa matar os lobos para continuar seu caminho.",
+      "condicao": "Você pode enfrentar o desafio de matar os lobos ou recuar.",
+      "user": "Eu vou enfrentar os lobos para seguir caminho.",
+      "ai": "Os lobos vêm em sua direção para atacar, mas sentem um cheiro forte vindo da sua arma e hesitam."
+    }
+  ]
+}
