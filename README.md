@@ -9,6 +9,22 @@ O principal objetivo deste projeto é desenvolver um chatbot capaz de:
 - Aprender continuamente: Adaptar-se a diferentes estilos de jogo e preferências do usuário através de um mecanismo de aprendizado contínuo.
 - Criar narrativas dinâmicas: Gerar histórias e cenários de forma dinâmica, baseados nas escolhas e ações do usuário.
 
+### Estrutura do Projeto
+- Estrutura de Pastas e Arquivos
+  
+```data/```: Contém o dataset (rpg_dataset.json) com os contextos de missões, diálogos e condições.
+  
+```scripts/```: Contém scripts principais para o treinamento e execução do modelo.
+  
+```train.py```: Realiza o pré-processamento e treinamento do modelo.
+  
+```tokenizer.py``` e ```config.py```: Configurações e tokenizações usadas pelo modelo.
+
+```chat_user.py```: Contém a lógica da interface gráfica do usuário, construída usando customtkinter, permitindo interações no chat.
+
+```models/```: Contém o modelo GPT-2 pré-treinado e ajustado para a IA de RPG.
+
+
 ### Tecnologias Utilizadas
 - Hugging Face Transformers: Biblioteca de processamento de linguagem natural (NLP) que oferece uma ampla variedade de modelos pré-treinados para tarefas como classificação de texto, geração de texto e compreensão de linguagem natural.
 - Python: Linguagem de programação utilizada para implementar a lógica do chatbot, interagir com a biblioteca Hugging Face e outras bibliotecas auxiliares.
