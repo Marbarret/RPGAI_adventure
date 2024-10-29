@@ -10,7 +10,7 @@ O principal objetivo deste projeto é desenvolver um chatbot capaz de:
 - Criar narrativas dinâmicas: Gerar histórias e cenários de forma dinâmica, baseados nas escolhas e ações do usuário.
 
 ### Estrutura do Projeto
-- Estrutura de Pastas e Arquivos
+Estrutura de Pastas e Arquivos
   
 ```data/```: Contém o dataset (rpg_dataset.json) com os contextos de missões, diálogos e condições.
   
@@ -24,6 +24,15 @@ O principal objetivo deste projeto é desenvolver um chatbot capaz de:
 
 ```models/```: Contém o modelo GPT-2 pré-treinado e ajustado para a IA de RPG.
 
+### Interface do Usuário (UI)
+A interface foi construída utilizando ```customtkinter``` para oferecer uma experiência visual organizada e funcional.
+
+Componentes da UI:
+- ChatBox: Exibe as mensagens trocadas entre o jogador e a IA.
+- Entrada de Texto: Permite ao usuário enviar mensagens para a IA.
+- Botão de Envio: Envia a mensagem para ser processada.
+- Carregar Foto e Exibir Status: Adiciona interatividade e personalização, onde o jogador pode carregar uma foto e ver seu status atual.
+- Seleção e Rolagem de Dados: O usuário pode escolher um dado (D4, D6, D8, D10, D12, D20) e realizar uma rolagem, cujo resultado é exibido no chat.
 
 ### Tecnologias Utilizadas
 - Hugging Face Transformers: Biblioteca de processamento de linguagem natural (NLP) que oferece uma ampla variedade de modelos pré-treinados para tarefas como classificação de texto, geração de texto e compreensão de linguagem natural.
