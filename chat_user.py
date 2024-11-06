@@ -50,7 +50,7 @@ class ChatLayout(customtkinter.CTkFrame):
         self.entry = customtkinter.CTkEntry(self.entry_frame, placeholder_text="Digite sua mensagem aqui...", height=100, width=500)
         self.entry.grid(row=0, column=0, padx=5, pady=5, sticky="ew")
 
-        self.send_button = customtkinter.CTkButton(self.entry_frame, text="Send", command=self.send_message)
+        self.send_button = customtkinter.CTkButton(self.entry_frame, text="Send", command=self.process_user_message)
         self.send_button.grid(row=0, column=1, padx=5, pady=5)
 
         self.entry.bind("<Return>", self.send_message_event)
@@ -67,17 +67,8 @@ class ChatLayout(customtkinter.CTkFrame):
         self.roll_button = customtkinter.CTkButton(self.right_frame, text="Rolar Dado", command=self.roll_dice)
         self.roll_button.grid(row=2, column=0, padx=20, pady=10)
 
-        self.chatbox_frame = customtkinter.CTkScrollableFrame(self.chat_frame, height=450, width=1000)
-        self.chatbox_frame.grid(row=0, column=0, padx=20, pady=20, sticky="nsew")
-
-        self.send_button = customtkinter.CTkButton(self.entry_frame, text="Send", command=self.process_user_message)
-        self.send_button.grid(row=0, column=1, padx=5, pady=5)
-
-        self.entry.bind("<Return>", self.send_message_event)
-
     def roll_dice(self):
         selected_dice = self.dice_combobox.get()
-
         if not selected_dice:
             self.add_message("Erro", "Selecione um dado para rolar!", "system")
             return
@@ -92,23 +83,30 @@ class ChatLayout(customtkinter.CTkFrame):
 
         self.add_message("Sistema", f"Você rolou o dado {selected_dice} e obteve {rolled_value}", "system")
 
-    def send_message(self):
-        user_message = self.entry.get()
-        if user_message.strip():
-            self.add_message("Você", user_message, "user")
-            self.entry.delete(0, "end")
-            return user_message
+        if rolled_value >= 5:
+            feedback = "Sucesso na missão! Você completou o desafio."
+        else:
+            feedback = "Falha na missão. Tente novamente!"
+
+        self.add_message("Sistema", feedback, "system")
 
     def process_user_message(self):
-        user_message = self.send_message()  # Captura e exibe a mensagem do usuário
+        user_message = self.send_message()
 
-        if user_message:  # Se houver uma mensagem válida
-            with torch.no_grad():  # Desativa o cálculo de gradiente
+        if user_message:
+            with torch.no_grad():
                 inputs = self.tokenizer(user_message, return_tensors="pt")
                 outputs = self.model.generate(**inputs)
                 ai_response = self.tokenizer.decode(outputs[0], skip_special_tokens=True)
                 self.add_message("AI", ai_response, "ai")
 
+    def send_message(self):
+        user_message = self.entry.get()
+        if user_message.strip():
+            self.add_message("Você", user_message, "user")
+            self.entry.delete(0, "end")
+            return user_message 
+            
     def send_message_event(self, event):
         self.process_user_message()
 
@@ -134,11 +132,6 @@ class ChatLayout(customtkinter.CTkFrame):
         self.chatbox_frame._parent_canvas.yview_moveto(1.0)
 
     def upload_photo(self):
-        """
-        Opens a file dialog and allows the user to select an image file.
-        If an image is selected, resizes it, converts it to a PhotoImage,
-        and updates the profile image label.
-        """
         file_path = filedialog.askopenfilename(filetypes=[("Image files", "*.jpg;*.jpeg;*.png")])
         if file_path:
             try:
@@ -149,9 +142,3 @@ class ChatLayout(customtkinter.CTkFrame):
                 self.profile_image_label.image = photo
             except (IOError, OSError) as e:
                 print(f"Error opening image: {e}")
-
-    def load_model():
-        model = GPT2LMHeadModel.from_pretrained("../models/fine_tuned_gpt2")
-        tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
-        return model, tokenizer
-
