@@ -1,19 +1,843 @@
 {
-  "interacoes": [
-    {
-      "contexto": "Você precisa ficar mais forte conseguindo itens para melhoria de equipamento.",
-      "missao": "Destrua três vacas pretas e colete couro para armadura.",
-      "condicao": "É necessário tirar 5 ou mais no dado para sucesso.",
-      "resultado_dado": 3,
-      "user": "O usuário tirou 3 no dado.",
-      "ai": "Você não conseguiu completar a missão. Tente novamente."
-    },
-    {
-      "contexto": "Durante uma caminhada até a taverna do Sr. Smith, você encontra lobos famintos.",
-      "missao": "Você precisa matar os lobos para continuar seu caminho.",
-      "condicao": "Você pode enfrentar o desafio de matar os lobos ou recuar.",
-      "user": "Eu vou enfrentar os lobos para seguir caminho.",
-      "ai": "Os lobos vêm em sua direção para atacar, mas sentem um cheiro forte vindo da sua arma e hesitam."
-    }
+  "interacoes":[
+     {
+        "contexto":"Você precisa ficar mais forte conseguindo itens para melhoria de equipamento.",
+        "missao":"Destrua três vacas pretas e colete couro para armadura.",
+        "condicao":"É necessário tirar 5 ou mais no dado para sucesso.",
+        "resultado_dado":3,
+        "user":"O usuário tirou 3 no dado.",
+        "ai":"Você não conseguiu completar a missão. Tente novamente."
+     },
+     {
+        "contexto":"Durante uma caminhada até a taverna do Sr. Smith, você encontra lobos famintos.",
+        "missao":"Você precisa matar os lobos para continuar seu caminho.",
+        "condicao":"Você pode enfrentar o desafio de matar os lobos ou recuar.",
+        "user":"Eu vou enfrentar os lobos para seguir caminho.",
+        "ai":"Os lobos vêm em sua direção para atacar, mas sentem um cheiro forte vindo da sua arma e hesitam."
+     },
+     {
+        "contexto":"Em uma floresta sombria, você está em busca de recursos para aprimorar suas habilidades de alquimia.",
+        "missao":"Colete cinco ervas mágicas luminosas para fazer poções.",
+        "condicao":"É necessário tirar 4 ou mais no dado para encontrar uma erva.",
+        "resultado_dado":5,
+        "user":"O usuário tirou 5 no dado.",
+        "ai":"Você encontra uma erva mágica luminosa escondida entre algumas árvores escuras. Falta pouco para completar sua coleta."
+     },
+     {
+        "contexto":"Nas planícies de Aridal, um grupo de javalis está ameaçando o equilíbrio ecológico.",
+        "missao":"Derrote dois javalis para manter o controle da população.",
+        "condicao":"Você precisa tirar 6 no dado para acertar um golpe fatal.",
+        "resultado_dado":3,
+        "user":"O usuário tirou 3 no dado.",
+        "ai":"Seu golpe não é o suficiente para derrubar o javali. Ele se afasta por um momento, mas permanece alerta. Tente novamente."
+     },
+     {
+        "contexto":"Você se encontra próximo a um campo de cogumelos venenosos necessários para uma missão.",
+        "missao":"Colete três cogumelos venenosos para um antídoto especial.",
+        "condicao":"É necessário tirar 4 ou mais no dado para coletar um cogumelo com segurança.",
+        "resultado_dado":6,
+        "user":"O usuário tirou 6 no dado.",
+        "ai":"Você coleta um cogumelo venenoso sem problemas. Restam apenas dois para concluir a missão."
+     },
+     {
+        "contexto":"Um grupo de goblins está saqueando a vila vizinha.",
+        "missao":"Derrote três goblins para proteger a vila.",
+        "condicao":"Cada ataque requer tirar 5 ou mais no dado para acertar.",
+        "resultado_dado":4,
+        "user":"O usuário tirou 4 no dado.",
+        "ai":"Você tenta atacar um goblin, mas ele desvia rapidamente. Ele zomba de você antes de recuar. Prepare-se para o próximo ataque."
+     },
+     {
+        "contexto":"Na margem do rio Gelid, você encontra peixes raros necessários para uma receita mágica.",
+        "missao":"Pesque dois peixes brilhantes para concluir a receita.",
+        "condicao":"É necessário tirar 3 ou mais no dado para conseguir pescar um peixe.",
+        "resultado_dado":5,
+        "user":"O usuário tirou 5 no dado.",
+        "ai":"Você captura um peixe brilhante com facilidade. Resta apenas mais um para completar sua missão."
+     },
+     {
+        "contexto":"Em uma caverna escura, você ouve ruídos estranhos e percebe que há morcegos ao redor.",
+        "missao":"Mate dois morcegos para acalmar a área.",
+        "condicao":"Você precisa tirar 4 ou mais no dado para acertar os morcegos no escuro.",
+        "resultado_dado":2,
+        "user":"O usuário tirou 2 no dado.",
+        "ai":"O golpe passa longe dos morcegos, que voam ainda mais alto. Tente novamente e ajuste sua mira."
+     },
+     {
+        "contexto":"Ao explorar uma clareira, você encontra um grupo de javalis selvagens.",
+        "missao":"Derrote dois javalis para coletar carne e peles.",
+        "condicao":"É necessário tirar 4 ou mais no dado para acertar um javali.",
+        "resultado_dado":5,
+        "user":"O usuário tirou 5 no dado.",
+        "ai":"Seu ataque é certeiro, e você derruba um dos javalis. Resta apenas mais um para concluir a missão."
+     },
+     {
+        "contexto":"Nas margens de um lago tranquilo, você avista patos selvagens, conhecidos por suas penas macias.",
+        "missao":"Capture três patos para obter penas para flechas.",
+        "condicao":"É necessário tirar 3 ou mais no dado para capturar um pato.",
+        "resultado_dado":2,
+        "user":"O usuário tirou 2 no dado.",
+        "ai":"Você tenta capturar o pato, mas ele nada para longe rapidamente. Tente novamente para capturar as penas que precisa."
+     },
+     {
+        "contexto":"Perto de uma vila, um grupo de bandidos menores está saqueando um carroção.",
+        "missao":"Derrote três bandidos para recuperar os suprimentos da vila.",
+        "condicao":"É necessário tirar 5 ou mais no dado para derrotar um bandido.",
+        "resultado_dado":6,
+        "user":"O usuário tirou 6 no dado.",
+        "ai":"Com um golpe preciso, você derruba um dos bandidos. Restam apenas dois para salvar os suprimentos."
+     },
+     {
+        "contexto":"Em uma floresta tranquila, você encontra veados pastando, mas precisa de peles para a missão.",
+        "missao":"Cace dois veados para coletar peles.",
+        "condicao":"É necessário tirar 4 ou mais no dado para capturar um veado, que é muito ágil.",
+        "resultado_dado":4,
+        "user":"O usuário tirou 4 no dado.",
+        "ai":"Você captura um dos veados e obtém sua pele. Falta apenas um para completar a missão."
+     },
+     {
+        "contexto":"Nas proximidades de uma caverna, você encontra aranhas gigantes que guardam teias valiosas para alquimia.",
+        "missao":"Derrote duas aranhas para coletar fios de seda.",
+        "condicao":"É necessário tirar 5 ou mais no dado para derrotar uma aranha.",
+        "resultado_dado":3,
+        "user":"O usuário tirou 3 no dado.",
+        "ai":"Seu ataque passa longe, e a aranha se esquiva rapidamente, se aproximando para contra-atacar. Tente novamente."
+     },
+     {
+        "contexto":"Você atravessa uma colina e encontra um enxame de abelhas gigantes protegendo seu mel raro.",
+        "missao":"Derrote três abelhas para coletar o mel para uma poção de cura.",
+        "condicao":"É necessário tirar 4 ou mais no dado para derrotar uma abelha sem ser picado.",
+        "resultado_dado":5,
+        "user":"O usuário tirou 5 no dado.",
+        "ai":"Você derrota uma das abelhas com sucesso e coleta uma pequena quantidade de mel. Restam mais duas para completar a missão."
+     },
+     {
+        "contexto":"No campo próximo ao vilarejo, você encontra ratos gigantes destruindo as plantações.",
+        "missao":"Derrote quatro ratos gigantes para proteger as colheitas.",
+        "condicao":"É necessário tirar 3 ou mais no dado para acertar um rato.",
+        "resultado_dado":6,
+        "user":"O usuário tirou 6 no dado.",
+        "ai":"Seu ataque é rápido e preciso, derrubando um dos ratos gigantes. Restam três para completar a missão e proteger a plantação."
+     },
+     {
+        "contexto":"Em uma colina rochosa, você encontra uma águia gigante guardando seu ninho.",
+        "missao":"Derrote a águia para obter uma pena rara para encantamento.",
+        "condicao":"É necessário tirar 6 ou mais no dado para acertar a águia em pleno voo.",
+        "resultado_dado":4,
+        "user":"O usuário tirou 4 no dado.",
+        "ai":"Seu ataque não acerta a águia, que desvia rapidamente e voa em círculos acima. Tente novamente para capturar a pena."
+     },
+     {
+        "contexto":"Em uma caverna de cristal, você encontra um elemental de pedra que guarda minerais raros.",
+        "missao":"Derrote o elemental de pedra para coletar cristais mágicos.",
+        "condicao":"É necessário tirar 5 ou mais no dado para superar a resistência do elemental.",
+        "resultado_dado":6,
+        "user":"O usuário tirou 6 no dado.",
+        "ai":"Você atinge o elemental de pedra com um golpe forte, quebrando parte de sua estrutura. Você consegue coletar alguns cristais. Missão completa!"
+     },
+     {
+        "contexto":"Em uma floresta nebulosa, você se depara com um corvo mágico que possui penas encantadas.",
+        "missao":"Capture o corvo para obter uma pena encantada.",
+        "condicao":"É necessário tirar 5 ou mais no dado para capturar o corvo.",
+        "resultado_dado":7,
+        "user":"O usuário tirou 7 no dado.",
+        "ai":"Com agilidade, você captura o corvo e obtém sua pena encantada. Sua missão está concluída com sucesso!"
+     },
+     {
+        "contexto":"Você está em um bosque em busca de recursos básicos para melhorar suas habilidades de sobrevivência.",
+        "missao":"Encontre e derrote dois coelhos selvagens para coletar peles.",
+        "condicao":"É necessário tirar 3 ou mais no dado para capturar um coelho.",
+        "resultado_dado":4,
+        "user":"O usuário tirou 4 no dado.",
+        "ai":"Você captura um coelho com facilidade, garantindo sua pele. Falta apenas um para completar a missão."
+     },
+     {
+        "contexto":"Você avista uma caverna e percebe que ela é guardada por morcegos grandes e agressivos.",
+        "missao":"Derrote três morcegos para coletar asas, úteis para alquimia.",
+        "condicao":"Cada ataque requer tirar 4 ou mais no dado para acertar um morcego.",
+        "resultado_dado":5,
+        "user":"O usuário tirou 5 no dado.",
+        "ai":"Seu golpe é certeiro, derrubando um dos morcegos. Ainda restam dois para completar sua missão."
+     },
+     {
+        "contexto":"Em um campo de trigo, você encontra algumas raposas selvagens, rápidas e furtivas.",
+        "missao":"Derrote duas raposas para obter pelos raros, essenciais para um elixir de velocidade.",
+        "condicao":"É necessário tirar 5 ou mais no dado para acertar uma raposa ágil.",
+        "resultado_dado":3,
+        "user":"O usuário tirou 3 no dado.",
+        "ai":"Sua tentativa de capturar a raposa falha, e ela escapa entre os arbustos. Tente novamente."
+     },
+     {
+        "contexto":"Uma vila foi invadida por um grupo de ladrões e os moradores estão pedindo ajuda.",
+        "missao":"Derrote quatro ladrões para recuperar os itens roubados.",
+        "condicao":"É necessário tirar 5 ou mais no dado para vencer um ladrão em combate.",
+        "resultado_dado":6,
+        "user":"O usuário tirou 6 no dado.",
+        "ai":"Com um ataque rápido, você derrota o primeiro ladrão e recupera parte dos itens roubados. Restam mais três."
+     },
+     {
+        "contexto":"Nos arredores de um antigo templo, um grupo de goblins montados em lobos está causando problemas.",
+        "missao":"Enfrente três goblins montados e colete suas armas para forjar novos equipamentos.",
+        "condicao":"Você precisa tirar 6 no dado para acertar um goblin em movimento.",
+        "resultado_dado":5,
+        "user":"O usuário tirou 5 no dado.",
+        "ai":"Você ataca, mas o goblin consegue desviar a tempo. Ele está se aproximando para contra-atacar. Prepare-se para tentar novamente."
+     },
+     {
+        "contexto":"No pico de uma montanha gelada, um urso gigante está guardando um cristal mágico.",
+        "missao":"Derrote o urso para coletar o cristal.",
+        "condicao":"É necessário tirar 7 ou mais no dado para acertar um golpe eficaz no urso.",
+        "resultado_dado":6,
+        "user":"O usuário tirou 6 no dado.",
+        "ai":"Seu golpe atinge o urso, mas não é o suficiente para derrubá-lo. O urso rosna e prepara um contra-ataque feroz. Tente novamente."
+     },
+     {
+        "contexto":"Em uma floresta densa, você encontra uma alcateia de lobos guardando uma relíquia.",
+        "missao":"Derrote quatro lobos para ter acesso à relíquia mágica.",
+        "condicao":"É necessário tirar 6 ou mais no dado para acertar um lobo em movimento.",
+        "resultado_dado":7,
+        "user":"O usuário tirou 7 no dado.",
+        "ai":"Com um golpe preciso, você derrota um dos lobos. Agora restam apenas três para completar a missão."
+     },
+     {
+        "contexto":"Em um antigo campo de batalha, espíritos inquietos vagam sem descanso.",
+        "missao":"Derrote três espíritos para coletar essências sombrias para feitiços avançados.",
+        "condicao":"Cada ataque contra um espírito requer tirar 7 ou mais no dado.",
+        "resultado_dado":4,
+        "user":"O usuário tirou 4 no dado.",
+        "ai":"Seu golpe atravessa o espírito sem efeito. Ele flutua ao seu redor, rindo de sua tentativa. Prepare-se para tentar novamente."
+     },
+     {
+        "contexto":"Nas profundezas de uma caverna vulcânica, você encontra o Dragão das Chamas Eternas, um poderoso guardião do fogo.",
+        "missao":"Derrote o Dragão das Chamas Eternas para obter sua escama lendária e aprimorar sua armadura.",
+        "condicao":"É necessário tirar 8 ou mais no dado para acertar o dragão devido à sua pele escaldante e reflexos rápidos.",
+        "resultado_dado":7,
+        "user":"O usuário tirou 7 no dado.",
+        "ai":"Seu golpe atinge o dragão, mas não é forte o suficiente para causar dano real. Ele ruge e se prepara para um ataque devastador. Tente novamente."
+     },
+     {
+        "contexto":"Você chega ao topo de uma torre antiga e encontra o Espectro Sombrio, um chefe que absorve a vida dos seus inimigos.",
+        "missao":"Derrote o Espectro Sombrio para libertar a torre de sua maldição e coletar a joia da vida.",
+        "condicao":"Cada ataque precisa de um resultado de 9 ou mais no dado para perfurar a defesa mágica do espectro.",
+        "resultado_dado":10,
+        "user":"O usuário tirou 10 no dado.",
+        "ai":"Seu ataque rompe a defesa do Espectro Sombrio, que grita ao ser atingido. Parte de sua essência começa a se dispersar. Continue assim para derrotá-lo!"
+     },
+     {
+        "contexto":"No coração da floresta negra, você encontra o Guardião Ancestral, uma criatura mágica que protege o solo sagrado.",
+        "missao":"Derrote o Guardião Ancestral para obter o Talismã da Natureza, uma peça rara para aumentar sua conexão com a magia.",
+        "condicao":"Você precisa tirar 8 ou mais no dado para acertar o Guardião devido à sua velocidade e resistência.",
+        "resultado_dado":6,
+        "user":"O usuário tirou 6 no dado.",
+        "ai":"Seu golpe passa perto, mas o Guardião Ancestral desvia facilmente e começa a invocar raízes para restringir seus movimentos. Tente novamente antes que ele complete o feitiço."
+     },
+     {
+        "contexto":"Dentro de uma fortaleza abandonada, você encontra o Cavaleiro Espectral, uma figura imponente com uma armadura possuída por magia antiga.",
+        "missao":"Derrote o Cavaleiro Espectral para coletar a Espada Maldita, uma arma poderosa.",
+        "condicao":"É necessário tirar 9 ou mais no dado para acertar através de sua armadura encantada.",
+        "resultado_dado":8,
+        "user":"O usuário tirou 8 no dado.",
+        "ai":"Seu golpe acerta o Cavaleiro Espectral, mas não penetra sua armadura resistente. Ele avança com sua espada, ameaçando um contra-ataque. Tente novamente."
+     },
+     {
+        "contexto":"No subsolo de uma pirâmide antiga, você enfrenta o Faraó Morto-Vivo, uma criatura amaldiçoada que controla exércitos de esqueletos.",
+        "missao":"Derrote o Faraó Morto-Vivo para recuperar o Cetro da Realeza, um item que concede domínio sobre mortos-vivos.",
+        "condicao":"É necessário tirar 10 ou mais no dado para acertar o faraó e superar sua resistência mágica.",
+        "resultado_dado":10,
+        "user":"O usuário tirou 10 no dado.",
+        "ai":"Seu golpe atravessa as defesas mágicas do Faraó Morto-Vivo, causando uma rachadura em sua armadura antiga. O faraó recua, e você está próximo de completar a missão!"
+     },
+     {
+        "contexto":"Em um campo devastado pela guerra, você encontra o Gigante de Pedra, um monstro colossal que protege uma relíquia esquecida.",
+        "missao":"Derrote o Gigante de Pedra para conseguir a Pedra do Titã, um artefato lendário.",
+        "condicao":"Cada ataque requer um resultado de 10 ou mais no dado para romper sua pele de pedra.",
+        "resultado_dado":7,
+        "user":"O usuário tirou 7 no dado.",
+        "ai":"Seu golpe ricocheteia na pele dura do Gigante de Pedra, causando apenas faíscas. Ele levanta seu braço massivo, pronto para um ataque devastador. Tente novamente."
+     },
+     {
+        "contexto":"Nas catacumbas escuras do templo, você enfrenta o Senhor das Almas, um necromante poderoso que drena energia vital.",
+        "missao":"Derrote o Senhor das Almas para obter o Pergaminho dos Condenados, que permite conjurar feitiços proibidos.",
+        "condicao":"Você precisa tirar 9 ou mais no dado para interromper a magia do necromante e causar dano real.",
+        "resultado_dado":9,
+        "user":"O usuário tirou 9 no dado.",
+        "ai":"Seu ataque atinge o Senhor das Almas, interrompendo seu feitiço de drenagem. Ele recua, e você sente que está ganhando vantagem. Continue o ataque!"
+     },
+     {
+        "contexto":"Em uma cripta esquecida, você se depara com o Rei Esqueleto, um chefe que revive com cada ataque falho.",
+        "missao":"Derrote o Rei Esqueleto para conseguir a Coroa dos Mortos, um item que aumenta seu poder sobre esqueletos.",
+        "condicao":"É necessário tirar 10 ou mais no dado para evitar a regeneração do Rei Esqueleto e destruí-lo completamente.",
+        "resultado_dado":8,
+        "user":"O usuário tirou 8 no dado.",
+        "ai":"Seu golpe quebra parte do Rei Esqueleto, mas ele começa a se reconstruir rapidamente, rindo enquanto seus ossos se reúnem. Tente novamente para impedir que ele se regenere."
+     },
+     {
+        "contexto":"Você está em uma clareira, cercado por arbustos frutíferos que são vigiados por coelhos rápidos.",
+        "missao":"Capture três coelhos para obter carne e peles para o jantar e troca no mercado.",
+        "condicao":"É necessário tirar 4 ou mais no dado para capturar um coelho.",
+        "resultado_dado":5,
+        "user":"O usuário tirou 5 no dado.",
+        "ai":"Você consegue capturar um coelho rapidamente. Restam apenas dois para completar a missão!"
+     },
+     {
+        "contexto":"Nas margens de um rio, você encontra um cardume de peixes raros que podem ser usados para preparar poções de resistência.",
+        "missao":"Pesque três peixes raros do cardume.",
+        "condicao":"É necessário tirar 3 ou mais no dado para pescar um peixe raro.",
+        "resultado_dado":2,
+        "user":"O usuário tirou 2 no dado.",
+        "ai":"Você tenta pescar, mas o peixe escapa das suas mãos. Tente novamente para capturar o próximo!"
+     },
+     {
+        "contexto":"Em uma antiga cripta, você encontra um Esqueleto Guerreiro guardando uma adaga mágica.",
+        "missao":"Derrote o Esqueleto Guerreiro para recuperar a adaga mágica.",
+        "condicao":"É necessário tirar 7 ou mais no dado para derrotar o esqueleto e superar sua resistência.",
+        "resultado_dado":8,
+        "user":"O usuário tirou 8 no dado.",
+        "ai":"Você acerta um golpe preciso no Esqueleto Guerreiro, desmantelando-o e conquistando a adaga mágica. Missão completa!"
+     },
+     {
+        "contexto":"Você entra em um bosque encantado onde crescem flores raras que podem ser usadas em poções de cura.",
+        "missao":"Coleta cinco flores raras antes que o encanto do bosque desapareça.",
+        "condicao":"É necessário tirar 4 ou mais no dado para coletar cada flor com sucesso.",
+        "resultado_dado":6,
+        "user":"O usuário tirou 6 no dado.",
+        "ai":"Você coleta uma das flores com sucesso. Restam quatro para completar a missão!"
+     },
+     {
+        "contexto":"Você chega ao sopé de uma montanha e encontra uma alcateia de lobos de gelo.",
+        "missao":"Derrote dois lobos de gelo para recuperar as peles espessas e resistentes ao frio.",
+        "condicao":"É necessário tirar 6 ou mais no dado para acertar um lobo de gelo.",
+        "resultado_dado":5,
+        "user":"O usuário tirou 5 no dado.",
+        "ai":"Seu ataque passa perto, mas o lobo se esquiva rapidamente. Ele começa a se aproximar com olhos ameaçadores. Tente novamente."
+     },
+     {
+        "contexto":"No deserto, você encontra um cacto raro que contém uma água valiosa e refrescante.",
+        "missao":"Colete água de três cactos para aumentar sua resistência ao calor.",
+        "condicao":"É necessário tirar 3 ou mais no dado para extrair água com sucesso.",
+        "resultado_dado":4,
+        "user":"O usuário tirou 4 no dado.",
+        "ai":"Você extrai a água de um cacto com sucesso. Restam apenas dois para completar a missão."
+     },
+     {
+        "contexto":"Em uma colina, você encontra um urso feroz protegendo uma caverna cheia de minerais preciosos.",
+        "missao":"Derrote o urso para conseguir acesso à caverna e coletar minerais.",
+        "condicao":"É necessário tirar 8 ou mais no dado para superar o urso.",
+        "resultado_dado":7,
+        "user":"O usuário tirou 7 no dado.",
+        "ai":"Seu ataque atinge o urso, mas ele se mantém firme e ainda o bloqueia. Ele ruge, ameaçando outro ataque. Tente novamente."
+     },
+     {
+        "contexto":"Em uma floresta densa, você encontra árvores frutíferas protegidas por macacos travessos.",
+        "missao":"Colete cinco frutas sem que os macacos as levem antes.",
+        "condicao":"É necessário tirar 5 ou mais no dado para coletar uma fruta com sucesso.",
+        "resultado_dado":6,
+        "user":"O usuário tirou 6 no dado.",
+        "ai":"Você pega uma fruta antes que os macacos a levem. Faltam quatro para completar sua missão!"
+     },
+     {
+        "contexto":"Nas profundezas de uma caverna iluminada por cristais, você encontra uma aranha venenosa.",
+        "missao":"Derrote a aranha para coletar veneno e usar em suas flechas.",
+        "condicao":"É necessário tirar 6 ou mais no dado para derrotar a aranha sem ser envenenado.",
+        "resultado_dado":7,
+        "user":"O usuário tirou 7 no dado.",
+        "ai":"Você derrota a aranha com habilidade e coleta o veneno. Missão completa!"
+     },
+     {
+        "contexto":"Em um campo aberto, você encontra um grupo de goblins saqueadores.",
+        "missao":"Derrote três goblins para proteger a vila próxima.",
+        "condicao":"É necessário tirar 5 ou mais no dado para acertar cada goblin.",
+        "resultado_dado":5,
+        "user":"O usuário tirou 5 no dado.",
+        "ai":"Seu golpe derruba um dos goblins. Restam apenas dois para proteger a vila!"
+     },
+     {
+        "contexto":"Enquanto explora as montanhas, você encontra um grupo de bodes selvagens.",
+        "missao":"Capture dois bodes para obter couro e carne.",
+        "condicao":"É necessário tirar 4 ou mais no dado para capturar um bode.",
+        "resultado_dado":3,
+        "user":"O usuário tirou 3 no dado.",
+        "ai":"Você tenta capturar o bode, mas ele se afasta rapidamente pelas pedras. Tente novamente."
+     },
+     {
+        "contexto":"Nas profundezas de uma floresta sombria, você vê um cervo com chifres reluzentes que dizem ter poderes mágicos.",
+        "missao":"Capture o cervo para coletar um chifre mágico.",
+        "condicao":"É necessário tirar 6 ou mais no dado para capturar o cervo sem assustá-lo.",
+        "resultado_dado":7,
+        "user":"O usuário tirou 7 no dado.",
+        "ai":"Você se aproxima com calma e consegue capturar o cervo, obtendo um chifre mágico. Missão completa!"
+     },
+     {
+        "contexto":"Em um campo gramado, você encontra uma colmeia gigante de abelhas venenosas.",
+        "missao":"Colete o mel da colmeia para criar uma poção de resistência.",
+        "condicao":"É necessário tirar 5 ou mais no dado para colher o mel sem ser picado.",
+        "resultado_dado":4,
+        "user":"O usuário tirou 4 no dado.",
+        "ai":"Você tenta pegar o mel, mas as abelhas o percebem e começam a voar em sua direção. Recuar pode ser uma opção ou você pode tentar novamente."
+     },
+     {
+        "contexto":"Você encontra uma caverna onde morcegos guardam frutas raras penduradas no teto.",
+        "missao":"Pegue três frutas raras sem despertar os morcegos.",
+        "condicao":"É necessário tirar 4 ou mais no dado para pegar cada fruta sem acordar os morcegos.",
+        "resultado_dado":5,
+        "user":"O usuário tirou 5 no dado.",
+        "ai":"Você pega uma das frutas com sucesso sem acordar os morcegos. Restam apenas duas."
+     },
+     {
+        "contexto":"No fundo de uma cripta abandonada, você encontra um Espectro guardando uma antiga joia mágica.",
+        "missao":"Derrote o Espectro para obter a joia mágica.",
+        "condicao":"É necessário tirar 7 ou mais no dado para derrotar o Espectro.",
+        "resultado_dado":6,
+        "user":"O usuário tirou 6 no dado.",
+        "ai":"Seu ataque atravessa o Espectro, que apenas se enfraquece levemente. Você precisará de um golpe mais forte para derrotá-lo."
+     },
+     {
+        "contexto":"Em uma ilha cercada por águas perigosas, você encontra uma tartaruga gigante conhecida por sua carapaça resistente.",
+        "missao":"Capture a tartaruga gigante para conseguir sua carapaça e fazer uma armadura.",
+        "condicao":"É necessário tirar 6 ou mais no dado para capturar a tartaruga sem assustá-la.",
+        "resultado_dado":7,
+        "user":"O usuário tirou 7 no dado.",
+        "ai":"Com calma e precisão, você captura a tartaruga gigante e obtém sua carapaça resistente. Missão concluída!"
+     },
+     {
+        "contexto":"Você atravessa um campo de flores venenosas, onde se escondem cobras perigosas.",
+        "missao":"Derrote três cobras para extrair veneno para suas armas.",
+        "condicao":"É necessário tirar 5 ou mais no dado para derrotar uma cobra sem ser picado.",
+        "resultado_dado":3,
+        "user":"O usuário tirou 3 no dado.",
+        "ai":"Seu ataque erra, e a cobra se aproxima perigosamente. Cuidado! Você pode tentar novamente ou recuar."
+     },
+     {
+        "contexto":"No alto de uma colina, você vê um falcão de penas douradas voando.",
+        "missao":"Capture o falcão para obter uma pena mágica para sua coleção.",
+        "condicao":"É necessário tirar 6 ou mais no dado para capturar o falcão em pleno voo.",
+        "resultado_dado":4,
+        "user":"O usuário tirou 4 no dado.",
+        "ai":"Você tenta alcançar o falcão, mas ele voa rápido demais e se afasta. Tente novamente para capturar a pena mágica."
+     },
+     {
+        "contexto":"Você encontra um grupo de ladrões escondidos em um antigo templo.",
+        "missao":"Derrote os três ladrões para recuperar os artefatos roubados.",
+        "condicao":"É necessário tirar 5 ou mais no dado para derrotar cada ladrão.",
+        "resultado_dado":6,
+        "user":"O usuário tirou 6 no dado.",
+        "ai":"Você derruba um dos ladrões com facilidade. Restam apenas dois para completar a missão!"
+     },
+     {
+        "contexto":"Durante uma travessia pelo pântano, você avista uma rara flor de lótus que pode ser usada para fazer antídotos.",
+        "missao":"Colete duas flores de lótus sem ser atacado por cobras de lama.",
+        "condicao":"É necessário tirar 4 ou mais no dado para colher cada flor sem atrair as cobras.",
+        "resultado_dado":5,
+        "user":"O usuário tirou 5 no dado.",
+        "ai":"Você coleta uma flor de lótus com sucesso e sem atrair as cobras. Resta apenas mais uma para completar a missão!"
+     },
+     {
+        "contexto":"Em uma planície aberta, você encontra uma alcateia de lobos das sombras.",
+        "missao":"Derrote quatro lobos das sombras para obter suas peles raras.",
+        "condicao":"É necessário tirar 6 ou mais no dado para derrotar cada lobo das sombras.",
+        "resultado_dado":5,
+        "user":"O usuário tirou 5 no dado.",
+        "ai":"Seu ataque passa de raspão e o lobo das sombras se esquiva, preparado para contra-atacar. Tente novamente."
+     },
+     {
+        "contexto":"Você encontra uma clareira cheia de cogumelos frescos.",
+        "missao":"Colete cinco cogumelos para usar em poções de cura.",
+        "condicao":"É necessário tirar 4 ou mais no dado para coletar um cogumelo.",
+        "resultado_dado":5,
+        "user":"O usuário tirou 5 no dado.",
+        "ai":"Você coleta um cogumelo fresco com facilidade. Restam apenas quatro para completar a missão!"
+     },
+     {
+        "contexto":"Enquanto caminha por uma floresta tranquila, você encontra uma árvore carregada de frutas.",
+        "missao":"Colha três frutas para usar como suprimento de alimentos.",
+        "condicao":"É necessário tirar 3 ou mais no dado para colher uma fruta.",
+        "resultado_dado":4,
+        "user":"O usuário tirou 4 no dado.",
+        "ai":"Você colhe uma fruta fresca da árvore. Restam apenas duas para completar a missão!"
+     },
+     {
+        "contexto":"Você encontra uma pequena fonte de água cristalina no meio da floresta.",
+        "missao":"Colete três frascos de água cristalina para abastecer sua reserva.",
+        "condicao":"É necessário tirar 3 ou mais no dado para coletar um frasco de água.",
+        "resultado_dado":6,
+        "user":"O usuário tirou 6 no dado.",
+        "ai":"Você enche o primeiro frasco com água cristalina. Restam dois para completar a missão!"
+     },
+     {
+        "contexto":"Você se depara com um campo de ervas medicinais.",
+        "missao":"Colha cinco ervas medicinais para preparar remédios.",
+        "condicao":"É necessário tirar 4 ou mais no dado para colher uma erva.",
+        "resultado_dado":5,
+        "user":"O usuário tirou 5 no dado.",
+        "ai":"Você colhe uma erva medicinal com facilidade. Restam apenas quatro para completar a missão!"
+     },
+     {
+        "contexto":"Durante uma caminhada ao longo do rio, você encontra várias pedras brilhantes na margem.",
+        "missao":"Colete cinco pedras brilhantes para usá-las em encantamentos.",
+        "condicao":"É necessário tirar 4 ou mais no dado para coletar uma pedra brilhante.",
+        "resultado_dado":5,
+        "user":"O usuário tirou 5 no dado.",
+        "ai":"Você coleta uma pedra brilhante. Restam apenas quatro para completar a missão!"
+     },
+     {
+        "contexto":"Você encontra uma floresta de pinheiros e percebe que a casca das árvores é valiosa.",
+        "missao":"Colete três pedaços de casca de pinheiro para fabricar cordas.",
+        "condicao":"É necessário tirar 3 ou mais no dado para coletar um pedaço de casca.",
+        "resultado_dado":4,
+        "user":"O usuário tirou 4 no dado.",
+        "ai":"Você coleta o primeiro pedaço de casca de pinheiro. Restam dois para completar a missão!"
+     },
+     {
+        "contexto":"Você chega a um campo de flores silvestres coloridas.",
+        "missao":"Colha quatro flores para usar em poções de cura.",
+        "condicao":"É necessário tirar 3 ou mais no dado para colher uma flor.",
+        "resultado_dado":6,
+        "user":"O usuário tirou 6 no dado.",
+        "ai":"Você coleta uma flor silvestre. Restam três para completar a missão!"
+     },
+     {
+        "contexto":"Você encontra uma árvore antiga carregada de nozes.",
+        "missao":"Colete cinco nozes para um lanche rápido.",
+        "condicao":"É necessário tirar 3 ou mais no dado para coletar uma noz.",
+        "resultado_dado":4,
+        "user":"O usuário tirou 4 no dado.",
+        "ai":"Você coleta uma noz. Restam quatro para completar a missão!"
+     },
+     {
+        "contexto":"Você se encontra em um campo de trigo dourado.",
+        "missao":"Colha três feixes de trigo para fazer farinha.",
+        "condicao":"É necessário tirar 3 ou mais no dado para colher um feixe de trigo.",
+        "resultado_dado":3,
+        "user":"O usuário tirou 3 no dado.",
+        "ai":"Você coleta o primeiro feixe de trigo. Restam dois para completar a missão!"
+     },
+     {
+        "contexto":"Você encontra uma horta de abóboras maduras.",
+        "missao":"Colha três abóboras para usar em receitas.",
+        "condicao":"É necessário tirar 4 ou mais no dado para colher uma abóbora.",
+        "resultado_dado":5,
+        "user":"O usuário tirou 5 no dado.",
+        "ai":"Você coleta uma abóbora com facilidade. Restam apenas duas para completar a missão!"
+     },
+     {
+        "contexto":"Você encontra uma clareira cheia de cogumelos frescos.",
+        "missao":"Colete cinco cogumelos para usar em poções de cura.",
+        "condicao":"É necessário tirar 4 ou mais no dado para coletar um cogumelo.",
+        "resultado_dado":5,
+        "user":"O usuário tirou 5 no dado.",
+        "ai":"Você coleta um cogumelo fresco com facilidade. Restam apenas quatro para completar a missão!"
+     },
+     {
+        "contexto":"Enquanto caminha por uma floresta tranquila, você encontra uma árvore carregada de frutas.",
+        "missao":"Colha três frutas para usar como suprimento de alimentos.",
+        "condicao":"É necessário tirar 3 ou mais no dado para colher uma fruta.",
+        "resultado_dado":4,
+        "user":"O usuário tirou 4 no dado.",
+        "ai":"Você colhe uma fruta fresca da árvore. Restam apenas duas para completar a missão!"
+     },
+     {
+        "contexto":"Você encontra uma pequena fonte de água cristalina no meio da floresta.",
+        "missao":"Colete três frascos de água cristalina para abastecer sua reserva.",
+        "condicao":"É necessário tirar 3 ou mais no dado para coletar um frasco de água.",
+        "resultado_dado":6,
+        "user":"O usuário tirou 6 no dado.",
+        "ai":"Você enche o primeiro frasco com água cristalina. Restam dois para completar a missão!"
+     },
+     {
+        "contexto":"Você se depara com um campo de ervas medicinais.",
+        "missao":"Colha cinco ervas medicinais para preparar remédios.",
+        "condicao":"É necessário tirar 4 ou mais no dado para colher uma erva.",
+        "resultado_dado":5,
+        "user":"O usuário tirou 5 no dado.",
+        "ai":"Você colhe uma erva medicinal com facilidade. Restam apenas quatro para completar a missão!"
+     },
+     {
+        "contexto":"Durante uma caminhada ao longo do rio, você encontra várias pedras brilhantes na margem.",
+        "missao":"Colete cinco pedras brilhantes para usá-las em encantamentos.",
+        "condicao":"É necessário tirar 4 ou mais no dado para coletar uma pedra brilhante.",
+        "resultado_dado":5,
+        "user":"O usuário tirou 5 no dado.",
+        "ai":"Você coleta uma pedra brilhante. Restam apenas quatro para completar a missão!"
+     },
+     {
+        "contexto":"Você encontra uma floresta de pinheiros e percebe que a casca das árvores é valiosa.",
+        "missao":"Colete três pedaços de casca de pinheiro para fabricar cordas.",
+        "condicao":"É necessário tirar 3 ou mais no dado para coletar um pedaço de casca.",
+        "resultado_dado":4,
+        "user":"O usuário tirou 4 no dado.",
+        "ai":"Você coleta o primeiro pedaço de casca de pinheiro. Restam dois para completar a missão!"
+     },
+     {
+        "contexto":"Você chega a um campo de flores silvestres coloridas.",
+        "missao":"Colha quatro flores para usar em poções de cura.",
+        "condicao":"É necessário tirar 3 ou mais no dado para colher uma flor.",
+        "resultado_dado":6,
+        "user":"O usuário tirou 6 no dado.",
+        "ai":"Você coleta uma flor silvestre. Restam três para completar a missão!"
+     },
+     {
+        "contexto":"Você encontra uma árvore antiga carregada de nozes.",
+        "missao":"Colete cinco nozes para um lanche rápido.",
+        "condicao":"É necessário tirar 3 ou mais no dado para coletar uma noz.",
+        "resultado_dado":4,
+        "user":"O usuário tirou 4 no dado.",
+        "ai":"Você coleta uma noz. Restam quatro para completar a missão!"
+     },
+     {
+        "contexto":"Você se encontra em um campo de trigo dourado.",
+        "missao":"Colha três feixes de trigo para fazer farinha.",
+        "condicao":"É necessário tirar 3 ou mais no dado para colher um feixe de trigo.",
+        "resultado_dado":3,
+        "user":"O usuário tirou 3 no dado.",
+        "ai":"Você coleta o primeiro feixe de trigo. Restam dois para completar a missão!"
+     },
+     {
+        "contexto":"Você encontra uma horta de abóboras maduras.",
+        "missao":"Colha três abóboras para usar em receitas.",
+        "condicao":"É necessário tirar 4 ou mais no dado para colher uma abóbora.",
+        "resultado_dado":5,
+        "user":"O usuário tirou 5 no dado.",
+        "ai":"Você coleta uma abóbora com facilidade. Restam apenas duas para completar a missão!"
+     },
+     {
+        "contexto":"Você está explorando uma floresta densa quando encontra uma raposa negra misteriosa.",
+        "missao":"Derrote a raposa negra e descubra o que ela guarda.",
+        "condicao":"É necessário tirar 3 ou mais no dado para derrotar a raposa.",
+        "resultado_dado":4,
+        "user":"O usuário tirou 4 no dado.",
+        "ai":"Você derrota a raposa negra e encontra um amuleto mágico. Missão completa!"
+     },
+     {
+        "contexto":"Ao seguir por uma estrada deserta, você encontra dois bandidos armados com facas.",
+        "missao":"Derrote os dois bandidos e recupere suas armas.",
+        "condicao":"É necessário tirar 4 ou mais no dado para derrotar um bandido.",
+        "resultado_dado":5,
+        "user":"O usuário tirou 5 no dado.",
+        "ai":"Você derrota um bandido com facilidade. Restam apenas um para completar a missão!"
+     },
+     {
+        "contexto":"Você chega a uma caverna onde um ogro está guardando a entrada.",
+        "missao":"Derrote o ogro e entre na caverna para continuar sua jornada.",
+        "condicao":"É necessário tirar 6 ou mais no dado para derrotar o ogro.",
+        "resultado_dado":7,
+        "user":"O usuário tirou 7 no dado.",
+        "ai":"Você derrota o ogro com força bruta. Missão completa!"
+     },
+     {
+        "contexto":"Você encontra um acampamento de orcs e decide atacá-los.",
+        "missao":"Derrote três orcs e roube os tesouros escondidos no acampamento.",
+        "condicao":"É necessário tirar 5 ou mais no dado para derrotar um orc.",
+        "resultado_dado":6,
+        "user":"O usuário tirou 6 no dado.",
+        "ai":"Você derrota um orc facilmente. Restam apenas dois para completar a missão!"
+     },
+     {
+        "contexto":"Durante uma exploração em uma montanha, você se depara com um dragão jovem.",
+        "missao":"Derrote o dragão jovem e recupere sua escama para forjar uma armadura.",
+        "condicao":"É necessário tirar 7 ou mais no dado para derrotar o dragão.",
+        "resultado_dado":8,
+        "user":"O usuário tirou 8 no dado.",
+        "ai":"Você derrota o dragão jovem com destreza. Missão completa!"
+     },
+     {
+        "contexto":"Você está em uma cidade abandonada e encontra um espectro vingativo.",
+        "missao":"Derrote o espectro e consiga a alma para destruir a maldição da cidade.",
+        "condicao":"É necessário tirar 8 ou mais no dado para derrotar o espectro.",
+        "resultado_dado":9,
+        "user":"O usuário tirou 9 no dado.",
+        "ai":"Você derrota o espectro com um feitiço de luz. Missão completa!"
+     },
+     {
+        "contexto":"Você chega a uma fortaleza onde um necromante poderoso está invocando mortos.",
+        "missao":"Derrote o necromante e destrua sua fonte de poder.",
+        "condicao":"É necessário tirar 9 ou mais no dado para derrotar o necromante.",
+        "resultado_dado":10,
+        "user":"O usuário tirou 10 no dado.",
+        "ai":"Você derrota o necromante com um golpe preciso e destrói sua fonte de poder. Missão completa!"
+     },
+     {
+        "contexto":"Você entra em uma caverna subterrânea cheia de criaturas mutantes.",
+        "missao":"Derrote os seis mutantes e destrua a fonte de radiação que os transformou.",
+        "condicao":"É necessário tirar 6 ou mais no dado para derrotar um mutante.",
+        "resultado_dado":7,
+        "user":"O usuário tirou 7 no dado.",
+        "ai":"Você derrota um mutante. Restam cinco para completar a missão!"
+     },
+     {
+        "contexto":"Você encontra um antigo templo onde um gigante de pedra guarda o artefato sagrado.",
+        "missao":"Derrote o gigante de pedra e recupere o artefato.",
+        "condicao":"É necessário tirar 10 ou mais no dado para derrotar o gigante.",
+        "resultado_dado":11,
+        "user":"O usuário tirou 11 no dado.",
+        "ai":"Você derrota o gigante de pedra com um ataque estratégico. Missão completa!"
+     },
+     {
+        "contexto":"Em um campo de batalha, você encontra um cavaleiro negro montado em um cavalo espectral.",
+        "missao":"Derrote o cavaleiro negro e quebre sua espada amaldiçoada.",
+        "condicao":"É necessário tirar 11 ou mais no dado para derrotar o cavaleiro.",
+        "resultado_dado":12,
+        "user":"O usuário tirou 12 no dado.",
+        "ai":"Você derrota o cavaleiro negro e quebra sua espada amaldiçoada. Missão completa!"
+     },
+     {
+        "contexto":"Você está explorando uma região selvagem quando encontra um grupo de goblins armados.",
+        "missao":"Derrote os três goblins e recupere os itens roubados.",
+        "condicao":"É necessário tirar 4 ou mais no dado para derrotar um goblin.",
+        "resultado_dado":5,
+        "user":"O usuário tirou 5 no dado.",
+        "ai":"Você derrota um dos goblins facilmente. Restam dois para completar a missão!"
+     },
+     {
+        "contexto":"Enquanto atravessa uma ponte velha, você é atacado por um bando de corvos negros.",
+        "missao":"Derrote os corvos antes que eles o ataquem.",
+        "condicao":"É necessário tirar 3 ou mais no dado para derrotar um corvo.",
+        "resultado_dado":4,
+        "user":"O usuário tirou 4 no dado.",
+        "ai":"Você derruba um dos corvos. Restam apenas quatro para completar a missão!"
+     },
+     {
+        "contexto":"Você encontra uma caverna onde dois kobolds fazem patrulha.",
+        "missao":"Derrote os dois kobolds e saqueie seu tesouro.",
+        "condicao":"É necessário tirar 5 ou mais no dado para derrotar um kobold.",
+        "resultado_dado":6,
+        "user":"O usuário tirou 6 no dado.",
+        "ai":"Você derrota um dos kobolds. Apenas um resta para completar a missão!"
+     },
+     {
+        "contexto":"Você encontra um minotauro solitário nas ruínas de um antigo templo.",
+        "missao":"Derrote o minotauro para obter sua chave e abrir o portão do templo.",
+        "condicao":"É necessário tirar 8 ou mais no dado para derrotar o minotauro.",
+        "resultado_dado":9,
+        "user":"O usuário tirou 9 no dado.",
+        "ai":"Você derrota o minotauro com habilidade e recupera a chave. Missão completa!"
+     },
+     {
+        "contexto":"Enquanto caminha pela floresta, você encontra um urso selvagem.",
+        "missao":"Derrote o urso e colete sua pele.",
+        "condicao":"É necessário tirar 6 ou mais no dado para derrotar o urso.",
+        "resultado_dado":7,
+        "user":"O usuário tirou 7 no dado.",
+        "ai":"Você derrota o urso e coleta sua pele. Missão completa!"
+     },
+     {
+        "contexto":"Você chega a uma clareira onde um bando de lobos está caçando.",
+        "missao":"Derrote os três lobos e garanta sua segurança.",
+        "condicao":"É necessário tirar 5 ou mais no dado para derrotar um lobo.",
+        "resultado_dado":5,
+        "user":"O usuário tirou 5 no dado.",
+        "ai":"Você derrota um lobo. Restam apenas dois para completar a missão!"
+     },
+     {
+        "contexto":"Em um campo aberto, você encontra um grupo de bandoleiros.",
+        "missao":"Derrote os cinco bandoleiros e recupere os itens roubados.",
+        "condicao":"É necessário tirar 4 ou mais no dado para derrotar cada bandoleiro.",
+        "resultado_dado":5,
+        "user":"O usuário tirou 5 no dado.",
+        "ai":"Você derrota o primeiro bandoleiro. Restam quatro para completar a missão!"
+     },
+     {
+        "contexto":"Você se depara com um bando de orcs no meio da estrada.",
+        "missao":"Derrote os orcs e evite que continuem suas pilhagens.",
+        "condicao":"É necessário tirar 6 ou mais no dado para derrotar um orc.",
+        "resultado_dado":8,
+        "user":"O usuário tirou 8 no dado.",
+        "ai":"Você derrota um orc e afasta os outros. Restam três para completar a missão!"
+     },
+     {
+        "contexto":"Você entra em um templo antigo e é atacado por múmias guardiãs.",
+        "missao":"Derrote as múmias e recupere o artefato sagrado.",
+        "condicao":"É necessário tirar 7 ou mais no dado para derrotar uma múmia.",
+        "resultado_dado":7,
+        "user":"O usuário tirou 7 no dado.",
+        "ai":"Você derrota uma múmia com precisão. Restam apenas duas para completar a missão!"
+     },
+     {
+        "contexto":"Você é atacado por um bando de hienas enquanto atravessa a savana.",
+        "missao":"Derrote as hienas e proteja seu território.",
+        "condicao":"É necessário tirar 4 ou mais no dado para derrotar uma hiena.",
+        "resultado_dado":6,
+        "user":"O usuário tirou 6 no dado.",
+        "ai":"Você derrota uma hiena com facilidade. Restam apenas quatro para completar a missão!"
+     },
+     {
+        "contexto":"Você chega a uma pequena vila à beira de um rio, onde os aldeões estão em pânico devido a uma horda de goblins.",
+        "missao":"Proteja a vila dos goblins e assegure que nenhum aldeão seja ferido.",
+        "condicao":"É necessário tirar 4 ou mais no dado para repelir cada goblin.",
+        "resultado_dado":5,
+        "user":"O usuário tirou 5 no dado.",
+        "ai":"Você afasta um dos goblins antes que ele cause danos. Restam mais dois para completar a missão!"
+     },
+     {
+        "contexto":"Os aldeões de uma vila estão sendo atacados por um bando de lobos famintos durante a noite.",
+        "missao":"Defenda a vila e proteja os aldeões dos lobos.",
+        "condicao":"É necessário tirar 3 ou mais no dado para derrotar cada lobo.",
+        "resultado_dado":4,
+        "user":"O usuário tirou 4 no dado.",
+        "ai":"Você derrota um lobo, garantindo a segurança de um aldeão. Restam apenas dois para completar a missão!"
+     },
+     {
+        "contexto":"Durante uma tempestade, um grupo de bandidos decide saquear uma pequena vila à beira do caminho.",
+        "missao":"Impeça os bandidos de saquear a vila e proteja os bens dos aldeões.",
+        "condicao":"É necessário tirar 5 ou mais no dado para derrotar um bandido.",
+        "resultado_dado":6,
+        "user":"O usuário tirou 6 no dado.",
+        "ai":"Você derrota um bandido e protege os bens da vila. Restam apenas dois para completar a missão!"
+     },
+     {
+        "contexto":"Uma vila isolada está sendo atacada por uma gangue de orcs que ameaçam destruir tudo.",
+        "missao":"Defenda a vila contra os orcs e mantenha os aldeões a salvo.",
+        "condicao":"É necessário tirar 6 ou mais no dado para derrotar um orc.",
+        "resultado_dado":7,
+        "user":"O usuário tirou 7 no dado.",
+        "ai":"Você derrota um orc com habilidade e afasta os outros. Restam apenas três para completar a missão!"
+     },
+     {
+        "contexto":"Você encontra uma pequena vila que foi invadida por uma horda de mortos-vivos durante a noite.",
+        "missao":"Proteja a vila contra os mortos-vivos e assegure que os aldeões consigam se refugiar.",
+        "condicao":"É necessário tirar 7 ou mais no dado para derrotar um morto-vivo.",
+        "resultado_dado":8,
+        "user":"O usuário tirou 8 no dado.",
+        "ai":"Você derrota um morto-vivo e protege a entrada da vila. Restam apenas três para completar a missão!"
+     },
+     {
+        "contexto":"A pequena vila de Kethwood está sendo atacada por um bando de elfos sombrios que desejam destruir suas casas.",
+        "missao":"Defenda a vila de Kethwood contra os elfos sombrios.",
+        "condicao":"É necessário tirar 8 ou mais no dado para derrotar um elfo sombrio.",
+        "resultado_dado":9,
+        "user":"O usuário tirou 9 no dado.",
+        "ai":"Você derrota um elfo sombrio e mantém a entrada da vila segura. Restam apenas dois para completar a missão!"
+     },
+     {
+        "contexto":"A vila de Aster está sendo atacada por uma horda de kobolds, e os aldeões estão tentando se esconder nas casas.",
+        "missao":"Proteja as casas e garanta que os kobolds não destruam as defesas.",
+        "condicao":"É necessário tirar 5 ou mais no dado para derrotar um kobold.",
+        "resultado_dado":6,
+        "user":"O usuário tirou 6 no dado.",
+        "ai":"Você derrota um kobold e impede que ele destrua uma das casas. Restam apenas três para completar a missão!"
+     },
+     {
+        "contexto":"Você encontra uma vila sendo atacada por um exército de ogros, e os aldeões estão fugindo.",
+        "missao":"Defenda a vila contra os ogros e evite que eles causem mais destruição.",
+        "condicao":"É necessário tirar 9 ou mais no dado para derrotar um ogro.",
+        "resultado_dado":10,
+        "user":"O usuário tirou 10 no dado.",
+        "ai":"Você derrota um ogro com um ataque preciso. Restam apenas dois para completar a missão!"
+     },
+     {
+        "contexto":"Durante uma patrulha, você encontra um acampamento de bandidos ameaçando uma vila próxima.",
+        "missao":"Impeça os bandidos de atacar a vila e recupere os itens roubados.",
+        "condicao":"É necessário tirar 6 ou mais no dado para derrotar um bandido.",
+        "resultado_dado":7,
+        "user":"O usuário tirou 7 no dado.",
+        "ai":"Você derrota um bandido e evita que o ataque aconteça. Restam apenas três para completar a missão!"
+     },
+     {
+        "contexto":"Uma horda de trolls está atacando as muralhas de uma vila medieval.",
+        "missao":"Defenda a vila contra os trolls e proteja os pontos fracos das muralhas.",
+        "condicao":"É necessário tirar 8 ou mais no dado para derrotar um troll.",
+        "resultado_dado":9,
+        "user":"O usuário tirou 9 no dado.",
+        "ai":"Você derrota um troll com um golpe bem colocado. Restam apenas dois para completar a missão!"
+     }
   ]
 }
